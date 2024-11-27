@@ -3,15 +3,20 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-         String keyName = "GoogleChromeAutoLaunch";
-         String chromePath = "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\"";
+        String keyName = "MyJavaApp";
+        String appPath = System.getProperty("C:\\Users\\User\\IdeaProjects\\Projects\\sisteme_operationale\\so_lab5");
 
-AutoStartup autoStartup = new AutoStartup();
+        AutoStartup autoStartup = new AutoStartup();
 
-//       autoStartup.addAppToStartup(keyName,chromePath);
+      autoStartup.addToRegistry(keyName, appPath);
+
+      autoStartup.restartInMinutes(5);
+      autoStartup.displayLocalTime(4);
 
 
-        autoStartup.disableAppFromStartup(keyName);
+        // autoStartup.removeFromRegistry(keyName);
+
+
 
     }
 }
