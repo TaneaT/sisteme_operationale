@@ -1,0 +1,22 @@
+services:
+  windows_manager_db:
+    container_name: windows_manager_db
+    image: mysql:8.0.36
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456789
+      MYSQL_DATABASE: windows_manager
+      MYSQL_USER: tanea
+      MYSQL_PASSWORD: 123456789
+    ports:
+      - "3307:3306"
+  windows_manager_web:
+    container_name: windows_manager_web
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - windows_manager_db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://windows_manager_db:3306/windows_manager
+      SPRING_DATASOURCE_USERNAME: tanea
+      SPRING_DATASOURCE_PASSWORD: 123456789

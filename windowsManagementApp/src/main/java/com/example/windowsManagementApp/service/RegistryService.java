@@ -194,7 +194,7 @@ restrictedAppRepository.save(app);
         }
 
         System.out.println("Deleted restricted app successfully: " + appName);
-       RestrictedApp app = restrictedAppRepoappName);
+       RestrictedApp app = restrictedAppRepository.findByAppName(appName);
        restrictedAppRepository.deleteById(app.getId());
     }
 
