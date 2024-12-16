@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Autoloaded App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="text-center">Add Autoloaded App</h3>
+        </div>
+        <div class="card-body">
+            <form action="/registry/autoload/add" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="appName" class="form-label">App Name</label>
+                    <input type="text" id="appName" name="appName" class="form-control" placeholder="Enter the app name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="appPath" class="form-label">App Path (An Executable)</label>
+                    <input type="text" id="appPath" name="appPath" class="form-control" placeholder="Enter the absolute path of the app executable" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success">Add App</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+
+    document.getElementById('fileChooser').addEventListener('change', function(event) {
+        const fileInput = event.target;
+        const selectedFile = fileInput.files[0];
+        if (selectedFile) {
+            const absolutePath = selectedFile.path;
+            document.getElementById('appPath').value = absolutePath;
+        }
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
